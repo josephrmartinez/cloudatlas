@@ -18,9 +18,11 @@ export default function App() {
     // Do something with the selected file
   };
 
+
+
     return (
       <div className='flex flex-col max-w-sm h-full items-center mx-auto'>
-        <div className='flex flex-row w-full items-start my-6 text-3xl opacity-80 text-neutral-50'><img src='/logoicon.svg' />CloudAtlas</div>
+        <div className='flex flex-row w-full items-start my-6 text-3xl opacity-80 text-neutral-50'><img className='my-auto mr-1' src='/logoicon.svg' />CloudAtlas</div>
         <form method="post" className="w-full" enctype="multipart/form-data">
           <label
             id="uploadDiv"
@@ -42,13 +44,14 @@ export default function App() {
                   ref={fileInputRef}
                   className="opacity-0 absolute top-0 left-0 w-full h-full cursor-pointer"
                   onChange={handleFileChange}
+                  accept="image/*"
             />
             <div className='text-neutral-50'>- upload cloud image -</div></>
             }
           </label>
     
           <div className='grid grid-cols-2 gap-2'>
-            <Button className='my-5' variant='secondary' disabled={!selectedImage}>clear image</Button>
+            <Button className='my-5' variant='secondary' type='button' disabled={!selectedImage} onClick={()=>setSelectedImage(null)}>clear image</Button>
             <Button className='my-5' type='submit' variant='primary' disabled={!selectedImage}>identify cloud type</Button>
           </div>
           
