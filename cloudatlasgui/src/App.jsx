@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import './App.css'
 import { Button } from "@tremor/react";
+import { Card, Flex, Text, ProgressBar } from "@tremor/react";
 
 
 export default function App() {
@@ -18,9 +19,9 @@ export default function App() {
   };
 
     return (
-      <div className='flex flex-col max-w-md items-center mx-auto'>
+      <div className='flex flex-col max-w-sm h-full items-center mx-auto'>
     
-        <div className='flex flex-row w-full items-start mb-6 text-3xl text-neutral-600'><img src='/logoicon.svg' />CloudAtlas</div>
+        <div className='flex flex-row w-full items-start my-6 text-3xl opacity-80 text-neutral-50'><img src='/logoicon.svg' />CloudAtlas</div>
       
   
         <form method="post" className="w-full" enctype="multipart/form-data">
@@ -28,7 +29,7 @@ export default function App() {
         
           <div
             id="uploadDiv"
-            className="w-full h-48 bg-gray-100 rounded-md cursor-pointer mx-auto relative mb-5 flex flex-col items-center justify-center"
+            className="w-full h-48 bg-neutral-100/10 shadow-sm rounded-lg cursor-pointer mx-auto relative flex flex-col items-center justify-center"
             onClick={handleDivClick}
           >
             <input
@@ -38,14 +39,69 @@ export default function App() {
               className="opacity-0 absolute top-0 left-0 w-full h-full cursor-pointer"
               onChange={handleFileChange}
             />
-            <div className=''>upload cloud image</div>
+            <div className='text-neutral-50'>- upload cloud image -</div>
           </div>
     
-      
-          <Button type='submit' variant='primary' disabled={!selectedImage}>identify cloud type</Button>
+          <div className='grid grid-cols-2 gap-2'>
+            <Button className='my-5' variant='secondary' disabled={!selectedImage}>clear image</Button>
+            <Button className='my-5' type='submit' variant='primary' disabled={!selectedImage}>identify cloud type</Button>
+          </div>
+          
 
         </form>
 
+        
+
+        <Card className="max-w-sm mx-auto">
+          <ProgressBar value={57} color="teal" className="mt-3" />
+          <Flex>
+            <Text>cirrostratus</Text>
+            <Text>57%</Text>
+          </Flex>
+          <ProgressBar value={26} color="teal" className="mt-3" />
+          <Flex>
+            <Text>cirrocumulus</Text>
+            <Text>26%</Text>
+          </Flex>
+          <ProgressBar value={9} color="teal" className="mt-3" />
+          <Flex>
+            <Text>altocumulus</Text>
+            <Text>9%</Text>
+          </Flex>
+          <ProgressBar value={1} color="teal" className="mt-3" />
+          <Flex>
+            <Text>nimbostratus</Text>
+            <Text>1%</Text>
+          </Flex>
+          <ProgressBar value={1} color="teal" className="mt-3" />
+          <Flex>
+            <Text>cirrostratus</Text>
+            <Text>1%</Text>
+          </Flex>
+          <ProgressBar value={1} color="teal" className="mt-3" />
+          <Flex>
+            <Text>cirrostratus</Text>
+            <Text>1%</Text>
+          </Flex>
+          <ProgressBar value={1} color="teal" className="mt-3" />
+          <Flex>
+            <Text>cirrostratus</Text>
+            <Text>1%</Text>
+          </Flex>
+          <ProgressBar value={1} color="teal" className="mt-3" />
+          <Flex>
+            <Text>cirrostratus</Text>
+            <Text>1%</Text>
+          </Flex>
+          <ProgressBar value={1} color="teal" className="mt-3" />
+          <Flex>
+            <Text>cirrostratus</Text>
+            <Text>1%</Text>
+          </Flex>
+        </Card>
+
+
+        
       
       </div>
     )
