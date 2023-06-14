@@ -7,6 +7,8 @@ import { client } from "@gradio/client";
 export default function App() {
 
   const [selectedImage, setSelectedImage] = useState(null);
+  const [prediction, setPrediction] = useState({})
+  const [loading, setLoading] = useState(false)
   const fileInputRef = useRef(null);
   const handleDivClick = () => {
     fileInputRef.current.click();
@@ -18,12 +20,18 @@ export default function App() {
   };
 
   async function run() {
-    console.log("Starting run...")
-    console.log(selectedImage)
-    const app = await client("https://josephmdev-cloudatlas.hf.space/");
-    const result = await app.predict("/predict", [selectedImage]);
-    console.log(result?.data);
-  }
+    setLoading(true)
+    try {
+      const app = await client("https://josephmdev-cloudatlas.hf.space/");
+      const result = await app.predict("/predict", [selectedImage]);
+      setPrediction(result?.data);
+    } catch (error) {
+      // Handle the error appropriately (e.g., show an error message)
+      console.error("Error occurred:", error);
+    } finally {
+      setLoading(false);
+    }
+}
 
 
   function handleSubmit(event) {
