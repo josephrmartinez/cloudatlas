@@ -78,7 +78,7 @@ function renderOutput() {
       const key = `${prediction.label}-${index}`;
       return (
         <React.Fragment key={key}>
-          <ProgressBar value={percent} color="teal" className="mt-3" />
+          <ProgressBar value={percent} color="blue" className="mt-3" />
           <Flex>
             <Text>{prediction.label}</Text>
             <Text>{`${percent}%`}</Text>
@@ -94,6 +94,13 @@ useEffect(() => {
 }, [label]);
 
   
+  function clearInput() {
+    setSelectedImage(null)
+    setConfidences([])
+    setPrediction({})
+    setDescription("")
+    setLabel("")
+  }
     
 
 
@@ -102,20 +109,22 @@ useEffect(() => {
     <div className='flex flex-col max-w-sm h-full items-center mx-auto'>
       <div className='flex flex-row w-full items-start my-6 text-3xl select-none opacity-80 text-neutral-50'><img className='my-auto mr-1' src='/logoicon.svg' />CloudAtlas</div>
       <form method="post" className="w-full" encType="multipart/form-data">
-        <label
-          id="uploadDiv"
-          htmlFor='fileInput'
-          className="w-full h-48 bg-neutral-100/10 shadow-sm rounded-lg cursor-pointer mx-auto relative flex flex-col items-center justify-center"
-            
+        <div
+          className="w-full h-48 mx-auto relative flex flex-col items-center justify-center" 
         >
           {selectedImage ?
             <img
               alt="not found"
-              style={{ maxHeight: '180px' }}
+              style={{ maxHeight: '180px', borderRadius: '10px' }}
               src={URL.createObjectURL(selectedImage)}
             />
             :
             <>
+              <label
+                id="uploadDiv"
+                htmlFor='fileInput'
+                className="w-full h-48 bg-neutral-100/10 shadow-sm rounded-lg cursor-pointer mx-auto relative flex flex-col items-center justify-center" 
+              >
               <input
                 type="file"
                 id="fileInput"
@@ -124,12 +133,14 @@ useEffect(() => {
                 onChange={handleFileChange}
                 accept="image/*"
               />
-              <div className='text-neutral-50'>- upload cloud image -</div></>
+                <div className='text-neutral-100'>- click to upload cloud image -</div>
+                </label>
+            </>
           }
-        </label>
+        </div>
     
         <div className='grid grid-cols-2 gap-2'>
-          <Button className='my-5' variant='secondary' type='button' disabled={!selectedImage} onClick={() => setSelectedImage(null)}>clear image</Button>
+          <Button className='my-5' variant='secondary' type='button' disabled={!selectedImage} onClick={clearInput}>clear image</Button>
           <Button className='my-5' type='submit' variant='primary' disabled={!selectedImage} loading={loading} onClick={handleSubmit}>identify cloud type</Button>
         </div>
           
@@ -137,7 +148,7 @@ useEffect(() => {
       </form>
 
       {confidences.length > 1 &&
-        <Card className="max-w-sm mx-auto">
+        <Card className="max-w-sm mx-auto mb-10">
           <Card className=""><Text>{description}</Text></Card>
           {predictionBars}
         </Card>
