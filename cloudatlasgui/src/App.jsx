@@ -22,7 +22,7 @@ export default function App() {
 
     return (
       <div className='flex flex-col max-w-sm h-full items-center mx-auto'>
-        <div className='flex flex-row w-full items-start my-6 text-3xl opacity-80 text-neutral-50'><img className='my-auto mr-1' src='/logoicon.svg' />CloudAtlas</div>
+        <div className='flex flex-row w-full items-start my-6 text-3xl select-none opacity-80 text-neutral-50'><img className='my-auto mr-1' src='/logoicon.svg' />CloudAtlas</div>
         <form method="post" className="w-full" enctype="multipart/form-data">
           <label
             id="uploadDiv"
