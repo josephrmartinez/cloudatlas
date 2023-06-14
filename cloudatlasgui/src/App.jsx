@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import './App.css'
-import { Button } from "@tremor/react";
-import { Card, Flex, Text, ProgressBar } from "@tremor/react";
+import { Button, Card, Flex, Text, ProgressBar } from "@tremor/react";
+import { client } from "@gradio/client";
 
 
 export default function App() {
@@ -15,15 +15,26 @@ export default function App() {
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     setSelectedImage(selectedFile)
-    // Do something with the selected file
   };
 
+  async function run() {
+    console.log("Starting run...")
+    console.log(selectedImage)
+    const app = await client("https://josephmdev-cloudatlas.hf.space/");
+    const result = await app.predict("/predict", [selectedImage]);
+    console.log(result?.data);
+  }
 
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    run();
+  }
 
     return (
       <div className='flex flex-col max-w-sm h-full items-center mx-auto'>
         <div className='flex flex-row w-full items-start my-6 text-3xl select-none opacity-80 text-neutral-50'><img className='my-auto mr-1' src='/logoicon.svg' />CloudAtlas</div>
-        <form method="post" className="w-full" enctype="multipart/form-data">
+        <form method="post" className="w-full" encType="multipart/form-data">
           <label
             id="uploadDiv"
             htmlFor='fileInput'
@@ -52,7 +63,7 @@ export default function App() {
     
           <div className='grid grid-cols-2 gap-2'>
             <Button className='my-5' variant='secondary' type='button' disabled={!selectedImage} onClick={()=>setSelectedImage(null)}>clear image</Button>
-            <Button className='my-5' type='submit' variant='primary' disabled={!selectedImage}>identify cloud type</Button>
+            <Button className='my-5' type='submit' variant='primary' disabled={!selectedImage} onClick={handleSubmit}>identify cloud type</Button>
           </div>
           
 

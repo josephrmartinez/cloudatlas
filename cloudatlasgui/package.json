@@ -16,6 +16,7 @@
     "react-dropzone": "^14.2.3"
   },
   "devDependencies": {
+    "@gradio/client": "^0.1.2",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^4.0.0",
