@@ -106,8 +106,8 @@ useEffect(() => {
 
 
   return (
-    <div className='flex flex-col h-screen mb-2 space justify-between max-w-xs items-center mx-auto'>
-      <div><div className='flex flex-row w-full items-start my-6 text-3xl select-none opacity-80 text-neutral-50'><img className='my-auto mr-1' src='/logoicon.svg' />CloudAtlas</div>
+    <div className='flex flex-col h-screen mb-2 justify-between w-80 items-center mx-auto'>
+      <div><div className='flex flex-row w-80 items-start my-6 text-3xl select-none drop-shadow-xl opacity-80 text-neutral-50'><img className='my-auto mr-1' src='/logoicon.svg' />CloudAtlas</div>
       <form method="post" className="w-full" encType="multipart/form-data">
         <div
           className="w-full h-48 mx-auto relative flex flex-col items-center justify-center" 
@@ -133,7 +133,7 @@ useEffect(() => {
                 onChange={handleFileChange}
                 accept="image/*"
               />
-                <div className='text-neutral-100'>- click to upload cloud image -</div>
+                <div className='text-neutral-100/90'>- click to upload cloud image -</div>
                 </label>
             </>
           }
