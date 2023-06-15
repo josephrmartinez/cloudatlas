@@ -140,7 +140,7 @@ useEffect(() => {
         </div>
     
         <div className='grid grid-cols-2 gap-2'>
-          <Button className='my-5' variant='secondary' type='button' disabled={!selectedImage} onClick={clearInput}>clear image</Button>
+          <Button className='my-5' variant='secondary' type='button' color='white' disabled={!selectedImage} onClick={clearInput}>clear image</Button>
           <Button className='my-5' type='submit' variant='primary' disabled={!selectedImage} loading={loading} onClick={handleSubmit}>identify cloud type</Button>
         </div>
           
