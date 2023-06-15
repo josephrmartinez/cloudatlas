@@ -106,8 +106,8 @@ useEffect(() => {
 
 
   return (
-    <div className='flex flex-col max-w-sm h-screen items-center mx-auto'>
-      <div className='flex flex-row w-full items-start my-6 text-3xl select-none opacity-80 text-neutral-50'><img className='my-auto mr-1' src='/logoicon.svg' />CloudAtlas</div>
+    <div className='flex flex-col h-screen mb-2 space justify-between max-w-xs items-center mx-auto'>
+      <div><div className='flex flex-row w-full items-start my-6 text-3xl select-none opacity-80 text-neutral-50'><img className='my-auto mr-1' src='/logoicon.svg' />CloudAtlas</div>
       <form method="post" className="w-full" encType="multipart/form-data">
         <div
           className="w-full h-48 mx-auto relative flex flex-col items-center justify-center" 
@@ -141,7 +141,7 @@ useEffect(() => {
     
         <div className='grid grid-cols-2 gap-2'>
           <Button className='my-5' variant='secondary' type='button' color='white' disabled={!selectedImage} onClick={clearInput}>clear image</Button>
-          <Button className='my-5' type='submit' variant='primary' disabled={!selectedImage} loading={loading} onClick={handleSubmit}>identify cloud type</Button>
+          <Button className='my-5' type='submit' variant='primary' disabled={!selectedImage} loading={loading} onClick={handleSubmit}>identify cloud</Button>
         </div>
           
 
@@ -152,9 +152,10 @@ useEffect(() => {
           <Card className=""><Text>{description}</Text></Card>
           {predictionBars}
         </Card>
-      }
+      }</div>
+      
         
-      <footer className='fixed bottom-4 w-full text-center text-sm text-neutral-400'>built by <a className='underline hover:text-neutral-500 duration-300' href='https://josephm.dev/'>josephm.dev</a></footer>
+      <footer className='w-full text-center text-sm text-neutral-400 pb-4'>built by <a className='underline hover:text-neutral-500 duration-300' href='https://josephm.dev/'>josephm.dev</a></footer>
     </div>
   )
 }
