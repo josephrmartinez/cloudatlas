@@ -106,7 +106,7 @@ useEffect(() => {
 
 
   return (
-    <div className='flex flex-col max-w-sm h-full items-center mx-auto'>
+    <div className='flex flex-col max-w-sm h-screen items-center mx-auto'>
       <div className='flex flex-row w-full items-start my-6 text-3xl select-none opacity-80 text-neutral-50'><img className='my-auto mr-1' src='/logoicon.svg' />CloudAtlas</div>
       <form method="post" className="w-full" encType="multipart/form-data">
         <div
@@ -154,6 +154,7 @@ useEffect(() => {
         </Card>
       }
         
+      <footer className='fixed bottom-4 w-full text-center text-sm text-neutral-400'>built by <a className='underline hover:text-neutral-500 duration-300' href='https://josephm.dev/'>josephm.dev</a></footer>
     </div>
   )
 }
