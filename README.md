@@ -1,13 +1,14 @@
-TODO:
+Fine-tuned a resnet CNN model to identify cloud types from user-uploaded images.
 
-- Update colors throughout app
+cirrus  
+cirrostratus  
+cirrocumulus  
+altocumulus  
+altostratus  
+nimbostratus  
+cumulus  
+stratus  
+cumulonimbus  
+stratocumulus
 
-https://cloudatlasai.netlify.app/
-
-Logo: https://amee.la/
-
-React Vite build
-Tailwind styling
-Tremor data components
-
-Gradio API
+Built custom UI using React and Tailwind. Fine-tuned model served from huggingface. Frontend deployed on Netlify: https://cloudatlasai.netlify.app/
